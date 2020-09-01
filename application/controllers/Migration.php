@@ -22,5 +22,6 @@ class Migration extends CI_Controller
         $this->migration->version(003);
         $this->migration->version(004);
         $this->migration->version(005);
+        $this->migration->version(006);
     }
 }
