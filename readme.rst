@@ -68,3 +68,12 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+
+
+************
+Installation the Apps
+************
+1. Please install database name: e-wallet
+2. Set the database username and password
+3. Run the migration to create the table http://localhost/e-wallet-privy/migration
+4. Go to the landing page http://localhost/e-wallet-privy
