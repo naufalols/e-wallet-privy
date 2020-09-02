@@ -15,8 +15,7 @@ class Migration_Add_user extends CI_Migration
             ),
             'username' => array(
                 'type' => 'VARCHAR',
-                'constraint' => '255',
-                'unique' => TRUE,
+                'constraint' => '255'
             ),
             'email' => array(
                 'type' => 'VARCHAR',

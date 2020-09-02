@@ -12,4 +12,11 @@ class User extends CI_Controller
         print_r($_SERVER['PHP_AUTH_USER']);
         print_r($_GET);
     }
+    public function ses()
+    {
+        $databaru = $this->session->userdata();
+        var_dump($databaru);
+
+        // echo $databaru['kodeUnik'];
+    }
 }

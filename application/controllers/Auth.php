@@ -8,11 +8,12 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->library('session');
     }
     public function index()
     {
-        if ($this->session->has_userdata('email')) {
-            redirect('#');
+        if ($this->session->userdata('logged_in') == TRUE) {
+            redirect('wallet/index');
         } else {
             $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
             $this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -38,6 +39,15 @@ class Auth extends CI_Controller
                 $data = [
                     'email' => $user['email'],
                 ];
+                $newdata = array(
+                    'username'  => $user['username'],
+                    'email'     => $user['email'],
+                    'logged_in' => TRUE,
+                    'key' => $user['key'],
+                    'id' => $user['id'],
+                );
+
+                $this->session->set_userdata($newdata);
                 redirect('wallet/index');
             } else {
                 $this->session->set_flashdata('pesan', '<p>Gagal</p>');
@@ -52,15 +62,9 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('surel');
-        $this->session->unset_userdata('role_id');
+        $this->session->sess_destroy();
 
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Anda telah logout!</div>');
+        $this->session->set_flashdata('pesan', '<p>Anda telah logout</p>');
         redirect('auth');
-    }
-
-    public function ses()
-    {
-        $session->destroy();
     }
 }
