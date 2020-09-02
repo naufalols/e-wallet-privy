@@ -39,8 +39,16 @@ class User_model extends CI_Model
     {
 
         $this->db->set('balance', 'balance+' . $data['value'], FALSE);
-        $this->db->set('balance_achieve', 'balance_achieve+balance', FALSE);
+        $this->db->set('balance_achieve', 'balance_achieve+' . $data['value'], FALSE);
         $this->db->where('user_id', $data['id']);
-        $this->db->update('user_balance'); // gives UPDATE mytable SET field = field+1 WHERE id = 2
+        $this->db->update('user_balance');
+        $insert_id = $this->db->insert_id();
+
+        $query = $this->db->get_where('user_balance', array('user_id' => $insert_id));
+        $data =  $query->row_array();
+        $this->db->set('balance_before', '1000', FALSE);
+        $this->db->set('balance_after', $data['balance'], FALSE);
+
+        $this->db->insert('user_balance', $data);
     }
 }
