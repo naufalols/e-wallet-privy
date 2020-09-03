@@ -32,7 +32,7 @@ class Page extends CI_Controller
             $data[] = array(
                 'username' => $faker->unique()->name,
                 'email' =>  $faker->unique()->safeEmail,
-                'password' => $faker->md5,
+                'password' => 'qwerty',
                 'created_at' => date(DATE_ATOM, time()),
                 'updated_at' => date(DATE_ATOM, time()),
             );
@@ -52,8 +52,8 @@ class Page extends CI_Controller
 
             $data[] = array(
                 'user_id' => random_element($id),
-                'balance' => $faker->numberBetween($min = 100000, $max = 900000),
-                'balance_achieve' => $faker->numberBetween($min = 100000, $max = 900000),
+                'balance' => '0',
+                'balance_achieve' => '0',
                 'created_at' => date(DATE_ATOM, time()),
                 'updated_at' => date(DATE_ATOM, time()),
             );
