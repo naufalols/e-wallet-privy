@@ -78,3 +78,4 @@ Installation the Apps
 3. Run the migration to create the table http://localhost/e-wallet-privy/migration
 4. Run the seed to insert the user table http://localhost/e-wallet-privy/page
 5. Go to the landing page http://localhost/e-wallet-privy
+6. Login with account in database
